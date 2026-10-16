@@ -13,6 +13,13 @@
   "author": "Iulian Cristea <iulianx@gmail.com>",
   "license": "Apache-2.0",
   "homepage": "https://react.memobit.ro/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristeaIulian/memobit-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CristeaIulian/memobit-core/issues"
+  },
   "publishConfig": {
     "access": "public"
   },
