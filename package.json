@@ -1,0 +1,79 @@
+{
+  "name": "@memobit/core",
+  "version": "1.0.0",
+  "description": "React-free helpers shared by the Memobit apps in the browser and in Node — starting with error reporting to the hub. Ships ESM and CommonJS builds.",
+  "keywords": [
+    "error-reporting",
+    "logger",
+    "node",
+    "browser",
+    "typescript",
+    "memobit"
+  ],
+  "author": "Iulian Cristea <iulianx@gmail.com>",
+  "license": "Apache-2.0",
+  "homepage": "https://react.memobit.ro/",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && npm pack",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
+    "release": "npm run build && npm publish",
+    "check:npm-auth": "node scripts/check-npm-auth.mjs",
+    "ship": "npm run check:npm-auth && npm version patch && npm run release && git push --follow-tags",
+    "ship:minor": "npm run check:npm-auth && npm version minor && npm run release && git push --follow-tags",
+    "ship:major": "npm run check:npm-auth && npm version major && npm run release && git push --follow-tags",
+    "prepublishOnly": "vite build",
+    "dev": "vite build --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,css,scss}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,css,scss}\""
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.4",
+    "@microsoft/api-extractor": "7.59.2",
+    "@types/node": "25.8.0",
+    "eslint": "9.39.4",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-prettier": "5.5.6",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.7",
+    "eslint-plugin-simple-import-sort": "14.0.0",
+    "globals": "17.12.0",
+    "prettier": "3.9.9",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.1",
+    "vite": "8.3.1",
+    "vite-plugin-dts": "5.1.1"
+  },
+  "overrides": {
+    "@rushstack/ts-command-line": {
+      "argparse": "2.0.1"
+    }
+  }
+}
