@@ -81,6 +81,7 @@
   "overrides": {
     "@rushstack/ts-command-line": {
       "argparse": "2.0.1"
-    }
+    },
+    "fast-uri@3": "3.1.9"
   }
 }
